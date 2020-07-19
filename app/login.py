@@ -13,7 +13,11 @@ def register():
 
 @bp_login.route('/followers', methods=['GET'])
 def get_followers():
-    ...
+    username, password = request.json['username'], request.json['password']
+    insta = Insta(username, password)
+    insta.login()
+    result = insta.get_followes_pic()
+    return jsonify({ 'data' : result })
 
 @bp_login.route('/unfollow', methods=['POST'])
 def unfollow():
