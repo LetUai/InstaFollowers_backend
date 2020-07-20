@@ -54,3 +54,11 @@ class Insta:
                 return({ 'data' : seguindo })
         except: 
             return({ 'info' : 'Error'})        
+
+    def get_unfollowees(self): 
+        try: 
+            result  = set(self.seguindo).difference(self.seguidores)
+            result  = list(result)
+            return({ 'unfollowees' : result })
+        except: 
+            return({ 'info' : 'Error'})
